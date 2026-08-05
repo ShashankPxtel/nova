@@ -35,10 +35,11 @@ async function sendScanToBackground(payload) {
 }
 
 async function performGmailScan() {
-  const session = await getAuthSession();
-  if (!session?.accessToken) {
-    throw new Error('Log in to analyze emails with Tribunal.');
-  }
+  // Demo mode: skip auth check
+  // const session = await getAuthSession();
+  // if (!session?.accessToken) {
+  //   throw new Error('Log in to analyze emails with Nova.');
+  // }
 
   // Only scan when Gmail is showing a concrete message view.
   if (!hasActiveGmailEmail()) {
@@ -119,7 +120,7 @@ function startContextWatchdog(cleanup) {
   }, 1200);
 }
 
-console.debug('[Tribunal] Gmail content script loaded');
+console.debug('[Nova] Gmail content script loaded');
 
 mountWidgetIfEnabled();
 const stopWidgetRecovery = scheduleWidgetRecovery();
@@ -159,7 +160,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 // Keep the in-page widget in sync with popup settings changes.
 chrome.storage.onChanged.addListener((changes, areaName) => {
-  if (areaName !== 'local' || !changes.tribunal_widget_preferences) {
+  if (areaName !== 'local' || !changes.nova_widget_preferences) {
     return;
   }
 

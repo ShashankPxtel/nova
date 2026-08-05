@@ -1,5 +1,5 @@
 {
-    "name": "tribunal-extension",
+    "name": "nova-extension",
     "version": "1.0.0",
     "description": "Email phishing detection browser extension",
     "type": "module",

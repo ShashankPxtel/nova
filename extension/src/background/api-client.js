@@ -240,14 +240,12 @@ export async function scanEmailWithApi(payload) {
 
   const apiPayload = buildApiPayload(payload);
 
-  if (!apiPayload.from) {
-    throw new Error('Sender email could not be extracted from this message. Refresh the page and try again.');
-  }
+  // Demo mode: allow empty sender - backend will still analyze body/links/subject
+  // if (!apiPayload.from) {
+  //   throw new Error('Sender email could not be extracted from this message. Refresh the page and try again.');
+  // }
 
-  const shouldForceRefresh = Boolean(apiPayload.messageId);
-  const scanEndpoint = shouldForceRefresh
-    ? `${config.endpoint}${config.endpoint.includes('?') ? '&' : '?'}forceRefresh=true`
-    : config.endpoint;
+  const scanEndpoint = config.endpoint;
 
   // The background script owns the network boundary so auth/retry logic can stay centralized.
   const response = await fetch(scanEndpoint, {

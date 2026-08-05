@@ -1,6 +1,6 @@
-# Tribunal Browser Extension
+# Nova Browser Extension
 
-Tribunal is a Manifest V3 browser extension for scanning suspicious emails from Gmail and Outlook. It can scan the currently open mail tab through DOM extraction, and it also supports OAuth-backed mailbox API access through the Spring Boot backend.
+Nova is a Manifest V3 browser extension for scanning suspicious emails from Gmail and Outlook. It can scan the currently open mail tab through DOM extraction, and it also supports OAuth-backed mailbox API access through the Spring Boot backend.
 
 ## What The Extension Does
 
@@ -293,13 +293,13 @@ But the extension scan flow does not currently call this route before `/api/phis
 The extension stores state in `chrome.storage.local`.
 
 ```text
-tribunal_api_config
-tribunal_auth_config
-tribunal_auth_session
-tribunal_history
-tribunal_widget_state
-tribunal_widget_preferences
-tribunal_last_scan_debug
+nova_api_config
+nova_auth_config
+nova_auth_session
+nova_history
+nova_widget_state
+nova_widget_preferences
+nova_last_scan_debug
 ```
 
 Auth session contains the backend JWT and basic user profile claims.
@@ -308,7 +308,7 @@ Auth session contains the backend JWT and basic user profile claims.
 
 Local history:
 
-- Stored in `tribunal_history`.
+- Stored in `nova_history`.
 - Updated after scans.
 
 Backend history:
@@ -324,7 +324,7 @@ The Debug tab is currently hidden in the popup UI for project-report screenshots
 The debug storage still exists internally:
 
 ```js
-chrome.storage.local.get('tribunal_last_scan_debug').then(console.log)
+chrome.storage.local.get('nova_last_scan_debug').then(console.log)
 ```
 
 ## Troubleshooting

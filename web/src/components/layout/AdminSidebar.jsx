@@ -16,10 +16,10 @@ export function AdminSidebar({ activePage, onPageChange }) {
       <SidebarHeader>
         <div className="flex items-center gap-2 px-2">
           <div className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background">
-            <img src="/tribunal-logo.png" alt="Tribunal logo" className="h-5 w-5" />
+            <img src="/nova-logo.png" alt="Nova logo" className="h-5 w-5" />
           </div>
           <div className="flex flex-col">
-            <span className="text-sm font-semibold">Tribunal</span>
+            <span className="text-sm font-semibold">Nova</span>
           </div>
         </div>
       </SidebarHeader>

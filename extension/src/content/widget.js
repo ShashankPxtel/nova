@@ -1,7 +1,7 @@
 import { getWidgetState, saveWidgetState } from '../shared/storage.js';
 
-export const WIDGET_HOST_ID = 'tribunal-floating-widget-host';
-export const WIDGET_BUBBLE_HOST_ID = 'tribunal-floating-widget-bubble-host';
+export const WIDGET_HOST_ID = 'nova-floating-widget-host';
+export const WIDGET_BUBBLE_HOST_ID = 'nova-floating-widget-bubble-host';
 
 const ICONS = {
   chevron: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>`,
@@ -490,8 +490,8 @@ function createPanelMarkup(provider) {
     </style>
     <section class="panel">
       <div class="header">
-        <img class="header-logo" src="${getLogoUrl()}" alt="Tribunal" />
-        <div class="header-title">tribunal</div>
+        <img class="header-logo" src="${getLogoUrl()}" alt="Nova" />
+        <div class="header-title">nova</div>
         <button class="minimize" type="button" aria-label="Minimize widget" data-no-drag="true">-</button>
       </div>
       <div class="body">
@@ -552,9 +552,9 @@ function createBubbleMarkup() {
         object-fit: contain;
       }
     </style>
-    <button class="bubble hidden" type="button" aria-label="Open Tribunal widget">
+    <button class="bubble hidden" type="button" aria-label="Open Nova widget">
       <span class="bubble-inner">
-        <img class="bubble-logo" src="${getLogoUrl()}" alt="Tribunal" />
+        <img class="bubble-logo" src="${getLogoUrl()}" alt="Nova" />
       </span>
     </button>
   `;

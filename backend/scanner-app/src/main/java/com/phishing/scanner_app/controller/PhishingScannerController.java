@@ -26,7 +26,7 @@ public class PhishingScannerController {
         this.firestoreReportService = firestoreReportService;
     }
 
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+    // @PreAuthorize("hasAnyRole('USER','ADMIN')")
     @PostMapping("/scan")
     public ResponseEntity<ScanResponse> scanEmail(
         Authentication authentication,
@@ -41,7 +41,8 @@ public class PhishingScannerController {
             + ", hasLinks=" + request.hasLinks()
         );
         System.out.println("request: " + request);
-        return ResponseEntity.ok(scanOrchestrationService.scanEmail(authentication.getName(), request, forceRefresh));
+        String userId = (authentication != null && authentication.getName() != null) ? authentication.getName() : "demo_user";
+        return ResponseEntity.ok(scanOrchestrationService.scanEmail(userId, request, forceRefresh));
     }
 
     @PreAuthorize("hasAnyRole('USER','ADMIN')")

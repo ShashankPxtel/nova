@@ -32,7 +32,7 @@ import java.time.Instant;
 /**
  * Converts a successful OAuth2 login into this API's signed JWT and redirects the client.
  */
-@Component
+// @Component
 public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OAuth2LoginSuccessHandler.class);

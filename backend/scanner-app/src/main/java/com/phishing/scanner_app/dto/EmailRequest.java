@@ -1,6 +1,5 @@
 package com.phishing.scanner_app.dto;
 
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 
 import java.util.List;
@@ -11,7 +10,7 @@ public class EmailRequest {
     @Size(max = 500, message = "Subject must not exceed 500 characters")
     private String subject;
 
-    @Email(message = "Sender (from) must be a valid email address")
+    // @Email(message = "Sender (from) must be a valid email address") // relaxed for demo
     private String from;
 
     @Size(max = 500_000, message = "HTML body must not exceed 500,000 characters")

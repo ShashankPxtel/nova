@@ -33,14 +33,14 @@ export function TermsPage({ theme, onNavigate, onThemeToggle }) {
             <section className="space-y-4">
               <h2 className="text-2xl font-medium">1. Acceptance of Terms</h2>
               <p className="leading-relaxed">
-                By accessing or using Tribunal, you agree to be bound by these Terms of Service. If you don't agree with any part of these terms, you shouldn't use the service. We try to keep things simple, but security is a shared responsibility.
+                By accessing or using Nova, you agree to be bound by these Terms of Service. If you don't agree with any part of these terms, you shouldn't use the service. We try to keep things simple, but security is a shared responsibility.
               </p>
             </section>
 
             <section className="space-y-4">
               <h2 className="text-2xl font-medium">2. The Service</h2>
               <p className="leading-relaxed">
-                Tribunal provides AI-assisted phishing analysis. While we strive for high accuracy, our verdicts are intended as decision-support tools. No security tool is 100% foolproof, and you are responsible for the final security decisions you make based on our reports.
+                Nova provides AI-assisted phishing analysis. While we strive for high accuracy, our verdicts are intended as decision-support tools. No security tool is 100% foolproof, and you are responsible for the final security decisions you make based on our reports.
               </p>
             </section>
 
@@ -54,14 +54,14 @@ export function TermsPage({ theme, onNavigate, onThemeToggle }) {
             <section className="space-y-4">
               <h2 className="text-2xl font-medium">4. Proper Use</h2>
               <p className="leading-relaxed">
-                Please don't try to break Tribunal, scrape our data, or use the service for anything illegal. We reserve the right to suspend accounts that engage in suspicious or abusive behavior.
+                Please don't try to break Nova, scrape our data, or use the service for anything illegal. We reserve the right to suspend accounts that engage in suspicious or abusive behavior.
               </p>
             </section>
             
             <section className="space-y-4">
               <h2 className="text-2xl font-medium">5. Limitation of Liability</h2>
               <p className="leading-relaxed text-muted-foreground text-sm italic">
-                Tribunal is provided "as is." We aren't liable for any security breaches or data loss that occur, even if you were using our tool at the time. Always use your best judgment.
+                Nova is provided "as is." We aren't liable for any security breaches or data loss that occur, even if you were using our tool at the time. Always use your best judgment.
               </p>
             </section>
           </div>

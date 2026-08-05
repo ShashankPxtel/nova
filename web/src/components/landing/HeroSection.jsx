@@ -42,7 +42,7 @@ export function HeroSection({ onNavigate, theme = "dark" }) {
               Trust your<br className="hidden lg:block" /> inbox again!
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-              Tribunal decodes suspicious emails directly in your inbox.  It highlights exactly what to watch out for and gives you the confidence to manage your inbox safely.
+              Nova decodes suspicious emails directly in your inbox.  It highlights exactly what to watch out for and gives you the confidence to manage your inbox safely.
             </p>
           </motion.div>
 
@@ -75,7 +75,7 @@ export function HeroSection({ onNavigate, theme = "dark" }) {
             }`}>
             <img
               src="/hero_demo.png"
-              alt="Tribunal Platform Demo"
+              alt="Nova Platform Demo"
               className="w-full h-auto opacity-100"
             />
             {/* Subtle overlay glow */}

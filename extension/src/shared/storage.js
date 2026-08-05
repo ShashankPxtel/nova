@@ -2,14 +2,14 @@ import { DEFAULT_API_CONFIG, DEFAULT_AUTH_CONFIG } from './constants.js';
 
 // Centralize storage keys here so popup, content scripts, and background stay in sync.
 const STORAGE_KEYS = {
-  API_CONFIG: 'tribunal_api_config',
-  AUTH_CONFIG: 'tribunal_auth_config',
-  AUTH_SESSION: 'tribunal_auth_session',
-  SCAN_HISTORY: 'tribunal_history',
-  SUBMITTED_FEEDBACK_FLAGS: 'tribunal_submitted_feedback_flags',
-  WIDGET_STATE: 'tribunal_widget_state',
-  WIDGET_PREFERENCES: 'tribunal_widget_preferences',
-  LAST_SCAN_DEBUG: 'tribunal_last_scan_debug'
+  API_CONFIG: 'nova_api_config',
+  AUTH_CONFIG: 'nova_auth_config',
+  AUTH_SESSION: 'nova_auth_session',
+  SCAN_HISTORY: 'nova_history',
+  SUBMITTED_FEEDBACK_FLAGS: 'nova_submitted_feedback_flags',
+  WIDGET_STATE: 'nova_widget_state',
+  WIDGET_PREFERENCES: 'nova_widget_preferences',
+  LAST_SCAN_DEBUG: 'nova_last_scan_debug'
 };
 
 const MAX_HISTORY_ENTRIES = 50;

@@ -13,7 +13,7 @@ export function AdminHeader({ theme, onThemeToggle, authSession, onLogout, searc
   const user = authSession?.user
   const avatarUrl = user?.photoURL || user?.photoUrl || user?.picture || user?.avatarUrl || user?.avatar_url || ""
   const displayName = user?.displayName || user?.name || "Admin User"
-  const email = user?.email || "admin@tribunal.io"
+  const email = user?.email || "admin@nova.io"
 
   useEffect(() => {
     const handleClickOutside = (event) => {

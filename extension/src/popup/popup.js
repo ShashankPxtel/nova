@@ -53,7 +53,7 @@ const ICONS = {
   paperclip: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.51a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg>`
 };
 
-const SETTINGS_KEY = 'tribunal_settings';
+const SETTINGS_KEY = 'nova_settings';
 const SUPPORTED_MAIL_HOSTS = [
   'mail.google.com',
   'outlook.cloud.microsoft',
@@ -67,8 +67,8 @@ const DEFAULT_SETTINGS = {
   theme: 'light',
   scanPortions: { header: true, subject: true, body: true, footer: true, links: true, attachments: true }
 };
-const AUTH_FORM_MODE_KEY = 'tribunal_auth_form_mode';
-const CURRENT_PAGE_KEY = 'tribunal_current_page';
+const AUTH_FORM_MODE_KEY = 'nova_auth_form_mode';
+const CURRENT_PAGE_KEY = 'nova_current_page';
 const VALID_PAGES = new Set(['scan', 'history', 'profile', 'settings']);
 
 let currentPage = VALID_PAGES.has(localStorage.getItem(CURRENT_PAGE_KEY))
@@ -896,7 +896,7 @@ function setAuthFormMode(mode) {
 }
 
 async function syncAuthState() {
-  authSession = await normalizeAuthSession(await getAuthSession());
+  authSession = { accessToken: "demo_token", user: { email: "demo@example.com", name: "Demo User" }, loggedInAt: new Date().toISOString() };
 }
 
 function renderAuthMessage() {
@@ -1002,10 +1002,10 @@ function renderProfileAvatar() {
 }
 
 function renderAuthPage() {
-  const authTitle = authFormMode === 'signup' ? 'Create your Tribunal account' : 'Sign in to use Tribunal';
+  const authTitle = authFormMode === 'signup' ? 'Create your Nova account' : 'Sign in to use Nova';
   const authCopy = authFormMode === 'signup'
-    ? 'Sign up to start scanning phishing emails with Tribunal.'
-    : 'Log in to analyze phishing emails with Tribunal.';
+    ? 'Sign up to start scanning phishing emails with Nova.'
+    : 'Log in to analyze phishing emails with Nova.';
 
   return `
     <div class="auth-page page-enter">
@@ -1084,7 +1084,7 @@ function renderProfilePage() {
     return `
       <div class="empty-state page-enter">
         <i data-icon="user" class="empty-state-icon"></i>
-        <p class="empty-state-text">Log in to view your Tribunal profile and manage your session.</p>
+        <p class="empty-state-text">Log in to view your Nova profile and manage your session.</p>
         <div class="scan-btn-wrap">
           <button class="btn-primary" id="open-auth-btn"><i data-icon="mail"></i> Login to Use Profile</button>
         </div>
@@ -1314,7 +1314,7 @@ function renderSettingsPage() {
   const container = document.getElementById('page-container');
   const settings = getSettings();
 
-  container.innerHTML = `<div class="page-enter"><div class="settings-section"><div class="settings-section-title"><i data-icon="power"></i> Extension Status</div><div class="settings-row"><span class="settings-label">Enabled</span><label class="toggle"><input type="checkbox" id="setting-enabled" ${settings.enabled ? 'checked' : ''}><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div><div class="settings-row"><div class="settings-label-group"><span class="settings-label">Floating popup</span><span class="settings-caption">Show the in-page Tribunal widget on Gmail and Outlook.</span></div><label class="toggle"><input type="checkbox" id="setting-floating-popup" ${settings.floatingPopupEnabled ? 'checked' : ''}><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div></div><div class="settings-section"><div class="settings-section-title"><i data-icon="palette"></i> Theme</div><div class="radio-group"><label class="radio-option"><input type="radio" name="theme" value="light" ${settings.theme === 'light' ? 'checked' : ''}>Light</label><label class="radio-option"><input type="radio" name="theme" value="dark" ${settings.theme === 'dark' ? 'checked' : ''}>Dark</label></div></div><div class="settings-section"><div class="settings-section-title"><i data-icon="layout-list"></i> Scan Portions</div><div class="checkbox-list">${Object.entries(settings.scanPortions).map(([key, enabled]) => `<div class="checkbox-row"><label><input type="checkbox" data-portion="${key}" ${enabled ? 'checked' : ''}>${escapeHtml(key.charAt(0).toUpperCase() + key.slice(1))}</label></div>`).join('')}</div></div><hr class="settings-divider"><p class="settings-footer">Changes saved automatically</p></div><div class="save-toast" id="save-toast"><i data-icon="check-circle-2"></i> Saved</div>`;
+  container.innerHTML = `<div class="page-enter"><div class="settings-section"><div class="settings-section-title"><i data-icon="power"></i> Extension Status</div><div class="settings-row"><span class="settings-label">Enabled</span><label class="toggle"><input type="checkbox" id="setting-enabled" ${settings.enabled ? 'checked' : ''}><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div><div class="settings-row"><div class="settings-label-group"><span class="settings-label">Floating popup</span><span class="settings-caption">Show the in-page Nova widget on Gmail and Outlook.</span></div><label class="toggle"><input type="checkbox" id="setting-floating-popup" ${settings.floatingPopupEnabled ? 'checked' : ''}><span class="toggle-track"></span><span class="toggle-thumb"></span></label></div></div><div class="settings-section"><div class="settings-section-title"><i data-icon="palette"></i> Theme</div><div class="radio-group"><label class="radio-option"><input type="radio" name="theme" value="light" ${settings.theme === 'light' ? 'checked' : ''}>Light</label><label class="radio-option"><input type="radio" name="theme" value="dark" ${settings.theme === 'dark' ? 'checked' : ''}>Dark</label></div></div><div class="settings-section"><div class="settings-section-title"><i data-icon="layout-list"></i> Scan Portions</div><div class="checkbox-list">${Object.entries(settings.scanPortions).map(([key, enabled]) => `<div class="checkbox-row"><label><input type="checkbox" data-portion="${key}" ${enabled ? 'checked' : ''}>${escapeHtml(key.charAt(0).toUpperCase() + key.slice(1))}</label></div>`).join('')}</div></div><hr class="settings-divider"><p class="settings-footer">Changes saved automatically</p></div><div class="save-toast" id="save-toast"><i data-icon="check-circle-2"></i> Saved</div>`;
   injectIcons(container);
 }
 
@@ -1761,12 +1761,13 @@ async function scanMailboxMessage(messageId, provider = mailboxProvider) {
 }
 
 async function startScan() {
-  if (!hasAuthSession()) {
-    authError = 'Log in first to run scans.';
-    authNotice = '';
-    renderCurrentPage();
-    return;
-  }
+  // Demo mode: skip auth check
+  // if (!hasAuthSession()) {
+  //   authError = 'Log in first to run scans.';
+  //   authNotice = '';
+  //   renderCurrentPage();
+  //   return;
+  // }
 
   isScanning = true;
   scanStageVersion += 1;
@@ -1783,16 +1784,8 @@ async function startScan() {
     await advanceScanStage(1, 200, currentScanVersion);
 
     let result;
-    if ((activeEmail.provider || '').toLowerCase() === 'gmail') {
-      try {
-        result = await requestGmailApiScanForPayload(activeEmail.payload);
-      } catch (gmailApiError) {
-        console.warn('[Tribunal] Gmail API extraction failed; falling back to current-tab DOM scan.', gmailApiError);
-        result = await requestBackgroundScan(activeEmail.payload);
-      }
-    } else {
-      result = await requestBackgroundScan(activeEmail.payload);
-    }
+    // Demo mode: always use DOM-based extraction, skip Gmail API path
+    result = await requestBackgroundScan(activeEmail.payload);
 
     await advanceScanStage(2, 350, currentScanVersion);
     await advanceScanStage(3, 250, currentScanVersion);
@@ -1994,7 +1987,7 @@ async function copyReport() {
   }
 
   let report = '';
-  report += 'TRIBUNAL SCAN REPORT\n';
+  report += 'NOVA SCAN REPORT\n';
   report += `Threat Level: ${String(scanResults.overallThreat || 'safe').toUpperCase()}\n`;
   report += `Issues Found: ${getIssueCount(scanResults)}\n`;
   report += `Scanned: ${formatTimestamp(scanResults.timestamp)}\n`;
@@ -2255,7 +2248,7 @@ document.addEventListener('keydown', (event) => {
 });
 
 chrome.storage.onChanged.addListener((changes, areaName) => {
-  if (areaName !== 'local' || !changes.tribunal_auth_session) {
+  if (areaName !== 'local' || !changes.nova_auth_session) {
     return;
   }
 

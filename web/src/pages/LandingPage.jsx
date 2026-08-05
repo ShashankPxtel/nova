@@ -62,11 +62,11 @@ export function LandingPage({ theme, onNavigate, onThemeToggle }) {
           <div className="grid gap-10 md:grid-cols-[1.6fr_repeat(3,minmax(0,1fr))]">
             <div className="max-w-md">
               <div className="text-2xl font-semibold tracking-tight text-foreground flex items-center gap-2">
-                <img src="/tribunal-logo.png" alt="Tribunal Logo" className="h-8 w-8 object-contain" />
-                Tribunal
+                <img src="/nova-logo.png" alt="Nova Logo" className="h-8 w-8 object-contain" />
+                Nova
               </div>
               <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                Tribunal is a AI-assisted phishing detection tool designed for real-time email analysis and high-fidelity reporting across Gmail and Outlook.
+                Nova is a AI-assisted phishing detection tool designed for real-time email analysis and high-fidelity reporting across Gmail and Outlook.
               </p>
               <p className="mt-5 text-sm font-medium text-foreground/80">
                 Security for your personal inbox.

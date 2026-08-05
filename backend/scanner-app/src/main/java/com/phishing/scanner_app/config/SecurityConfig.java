@@ -28,17 +28,9 @@ public class SecurityConfig {
     }
 
     @Bean
-    public OAuth2AuthorizationRequestResolver authorizationRequestResolver(
-            ClientRegistrationRepository clientRegistrationRepository) {
-        return new MailboxAuthorizationRequestResolver(clientRegistrationRepository);
-    }
-
-    @Bean
     public SecurityFilterChain filterChain(
             HttpSecurity http,
-            JwtAuthFilter jwtAuthFilter,
-            OAuth2LoginSuccessHandler oAuth2LoginSuccessHandler,
-            OAuth2AuthorizationRequestResolver authorizationRequestResolver) throws Exception {
+            JwtAuthFilter jwtAuthFilter) throws Exception {
 
         http
             .csrf(csrf -> csrf.disable())
@@ -55,21 +47,18 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/api/phishing/reports").hasRole("ADMIN")
 
                 // USER or ADMIN
-                .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
-                .requestMatchers("/api/phishing/scan").hasAnyRole("USER", "ADMIN")
-                .requestMatchers("/api/phishing/history/**").hasAnyRole("USER", "ADMIN")
-                .requestMatchers("/api/phishing/flags/mine").hasAnyRole("USER", "ADMIN")
-                .requestMatchers("/api/phishing/reports/*").hasAnyRole("USER", "ADMIN")
-                .requestMatchers("/api/phishing/reports/*/flags").hasAnyRole("USER", "ADMIN")
-                .requestMatchers("/api/phishing/reports/*/findings/*/flags").hasAnyRole("USER", "ADMIN")
-                .requestMatchers("/api/mail/**").hasAnyRole("USER", "ADMIN")
+                .requestMatchers("/user/**").permitAll()
+                .requestMatchers("/api/phishing/scan").permitAll()
+                .requestMatchers("/api/phishing/history/**").permitAll()
+                .requestMatchers("/api/phishing/flags/mine").permitAll()
+                .requestMatchers("/api/phishing/reports/*").permitAll()
+                .requestMatchers("/api/phishing/reports/*/flags").permitAll()
+                .requestMatchers("/api/phishing/reports/*/findings/*/flags").permitAll()
+                .requestMatchers("/api/mail/**").permitAll()
 
                 .anyRequest().authenticated()
             )
-            .oauth2Login(oauth -> oauth
-                .authorizationEndpoint(endpoint -> endpoint.authorizationRequestResolver(authorizationRequestResolver))
-                .successHandler(oAuth2LoginSuccessHandler)
-            )
+            // .oauth2Login(...) removed for demo mode
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();

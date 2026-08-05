@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Tribunal",
+  "name": "Nova",
   "description": "Email phishing detection extension for Gmail and Outlook.",
   "version": "1.0.0",
   "action": {
@@ -34,7 +34,7 @@
   ],
   "browser_specific_settings": {
     "gecko": {
-      "id": "tribunal-extension@local.dev",
+      "id": "nova-extension@local.dev",
       "strict_min_version": "121.0"
     }
   },

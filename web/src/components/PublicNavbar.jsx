@@ -71,7 +71,7 @@ export function PublicNavbar({ onNavigate, theme = "dark", onThemeToggle }) {
             }`}
             onClick={(e) => handleNavigate(e, "landing")}
           >
-            Tribunal
+            Nova
           </Button>
 
           <div className="hidden md:flex items-center ml-2 mr-1">

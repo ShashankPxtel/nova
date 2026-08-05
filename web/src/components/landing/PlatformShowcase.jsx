@@ -26,7 +26,7 @@ export function PlatformShowcase({ theme = "dark" }) {
                 Scan exactly what you need.
               </h2>
               <p className="text-muted-foreground text-lg leading-relaxed">
-                Choose precisely what Tribunal analyzes, from hidden headers to specific links and attachments.
+                Choose precisely what Nova analyzes, from hidden headers to specific links and attachments.
               </p>
             </div>
           </motion.div>

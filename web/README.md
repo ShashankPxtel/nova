@@ -1,4 +1,4 @@
-﻿# Tribunal Admin Dashboard
+# Nova Admin Dashboard
 
 Frontend admin dashboard for the phishing detection project.
 

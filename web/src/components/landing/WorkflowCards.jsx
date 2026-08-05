@@ -4,7 +4,7 @@ import { DatabaseZap, FileText, MailCheck } from "lucide-react"
 const workflows = [
   {
     title: "Live Phishing Feeds",
-    copy: "Tribunal checks URLs against OpenPhish, PhishTank, URLhaus, and local reputation data so known malicious links are flagged quickly.",
+    copy: "Nova checks URLs against OpenPhish, PhishTank, URLhaus, and local reputation data so known malicious links are flagged quickly.",
     icon: DatabaseZap,
     delay: 0.1,
   },
@@ -42,7 +42,7 @@ export function WorkflowCards({ theme = "dark" }) {
         </div>
         <div className="space-y-4">
           <h2 className={`text-3xl md:text-5xl font-semibold tracking-tight ${isDark ? "text-white" : "text-stone-950"}`}>
-            What Tribunal checks.
+            What Nova checks.
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Concrete signals from the email, the links, and the attachments before a verdict is shown.
